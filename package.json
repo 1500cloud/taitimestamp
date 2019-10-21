@@ -1,12 +1,15 @@
 {
   "name": "@1500cloud/taitimestamp",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A JavaScript/TypeScript library for manipulating TAI timestamps",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "prepublishOnly": "rm -rf dist; npm run-script build",
     "build": "tsc",
+    "dev": "concurrently npm:dev:*",
+    "dev:jest": "jest --watch",
+    "dev:eslint": "esw . --ext .js,.ts -w",
     "test": "concurrently npm:test:*",
     "test:jest": "jest",
     "test:eslint": "eslint . --ext .js,.ts"
@@ -27,7 +30,9 @@
     "ts-jest": "^24.1.0",
     "typescript": "^3.6.4"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/1500cloud/taitimestamp.git"

@@ -16,7 +16,47 @@ or
 
 ## Usage
 
-_TODO_
+e.g.,
+
+    import { now } from "@1500cloud/taitimestamp";
+
+or
+
+    const { now } = require("@1500cloud/taitimestamp");
+
+The type `TaiTimestamp` is used to represent this in TypeScript. This is
+officially an object, but please use the built-in helpers to convert other
+domains.
+
+### `now(): TaiTimestamp`
+
+Returns a string representing a TAI Timestamp for the current date. This is
+limited to the millisecond resolution of the underlying JavaScript platform. 
+
+### `jsTimeToTaiTimestamp(number): TaiTimestamp`
+
+Takes a JavaScript timestamp (e.g., `new Date().getTime()`) and converts it
+to a TAI Timestamp object (limited to the millisecond precision of a
+JavaScript date object).
+
+### `taiTimestampFromString(string): TaiTimestamp | null`
+
+This takes a string like `"123455.66"` which represents a fractional number
+of seconds since the Unix epoch and converts it into an object. (Strings are
+used to maintain precision).
+
+### `taiTimestampToString(TaiTimestamp): string`
+
+This converts a TaiTimestamp object to a string representation.
+
+### `taiTimestampToMediaTimestamp(TaiTimestamp): string`
+
+This converts a TaiTimestamp object to a string representation for TAI time
+as used in broadcasting (e.g., NMOS APIs).
+
+### `equals(TaiTimestamp, TaiTimestamp): boolean`
+
+This compares two timestamp objects and returns if they are equal or not.
 
 ## Changelog
 
