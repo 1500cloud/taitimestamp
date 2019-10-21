@@ -11,16 +11,17 @@ if (Date.now() > new Date("2020-06-28").getTime()) {
 }
 
 // https://www.ietf.org/timezones/data/leap-seconds.list
+// the list above has an epoch of 1900, so this is computed to 1970 epoch below
 const LEAPSECONDS = [
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
+  2272060800,
+  2272060800,
+  2272060800,
+  2272060800,
+  2272060800,
+  2272060800,
+  2272060800,
+  2272060800,
+  2272060800,
   2272060800,
   2287785600,
   2303683200,
@@ -49,15 +50,16 @@ const LEAPSECONDS = [
   3550089600,
   3644697600,
   3692217600,
-];
+].map(ts => ts - 2208988800);
 
 export function jsTimeToTaiTimestamp(utcTimestamp: UtcTimestamp): TaiTimestamp {
+  const utcSeconds = Math.floor(utcTimestamp / 1000);
   const taiTimestamp = {
-    seconds: Math.floor(utcTimestamp / 1000),
+    seconds: utcSeconds,
     nanosecs: (utcTimestamp % 1000) * 1000000,
   };
   LEAPSECONDS.forEach(threshold => {
-    if (threshold < taiTimestamp.seconds) {
+    if (threshold <= utcSeconds) {
       taiTimestamp.seconds += 1;
     }
   });

@@ -1,4 +1,4 @@
-import { now, taiTimestampFromString, taiTimestampToString } from "../lib";
+import { jsTimeToTaiTimestamp, now, taiTimestampFromString, taiTimestampToString } from "../lib";
 
 describe("now()", () => {
   const dateNow = Date.now;
@@ -11,6 +11,29 @@ describe("now()", () => {
 
   afterEach(() => {
     Date.now = dateNow;
+  });
+});
+
+describe("jsTimeToTaiTimestamp", () => {
+  it("takes into account leap seconds", () => {
+    expect(jsTimeToTaiTimestamp(Date.parse("01 Jul 1972 00:00:01 GMT"))).toEqual({
+      seconds: 78796812,
+      nanosecs: 0,
+    });
+  });
+
+  it("increases on the threshold", () => {
+    expect(jsTimeToTaiTimestamp(Date.parse("01 Jul 1972 00:00:00 GMT"))).toEqual({
+      seconds: 78796811,
+      nanosecs: 0,
+    });
+  });
+
+  it("does not increase until the threshold is reached", () => {
+    expect(jsTimeToTaiTimestamp(Date.parse("30 Jun 1972 23:59:59 GMT"))).toEqual({
+      seconds: 78796809,
+      nanosecs: 0,
+    });
   });
 });
 
