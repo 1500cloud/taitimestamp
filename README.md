@@ -45,6 +45,11 @@ This takes a string like `"123455.66"` which represents a fractional number
 of seconds since the Unix epoch and converts it into an object. (Strings are
 used to maintain precision).
 
+### `taiTimestampFromMediaTimestamp(string): TaiTimestamp | null`
+
+This takes a string like `"123455:678000000"` as used to represent time in
+the broadcasting domain (e.g., NMOS APIs) and returns a TaiTimestamp object.
+
 ### `taiTimestampToString(TaiTimestamp): string`
 
 This converts a TaiTimestamp object to a string representation.

@@ -1,8 +1,17 @@
-import { jsTimeToTaiTimestamp, now, taiTimestampFromString, taiTimestampToString } from "../lib";
+import {
+  jsTimeToTaiTimestamp,
+  now,
+  taiTimestampFromMediaTimestamp,
+  taiTimestampFromString,
+  taiTimestampToString,
+} from "../lib";
 
 describe("now()", () => {
   const dateNow = Date.now;
-  Date.now = jest.fn().mockReturnValue(15716770455432);
+
+  beforeEach(() => {
+    Date.now = jest.fn().mockReturnValue(15716770455432);
+  });
 
   it("returns a TAI timestamp representing now, taking into account timestamps", () => {
     // this is not the greatest
@@ -54,5 +63,15 @@ describe("taiTimestampFromString()", () => {
 describe("taiTimestampToString()", () => {
   it("correctly pads the nanoseconds", () => {
     expect(taiTimestampToString({ seconds: 500, nanosecs: 42 })).toEqual("500.000000042");
+  });
+});
+
+describe("taiTimestampFromMediaTimestamp()", () => {
+  it("returns a TAI timestamp from a rational string representation", () => {
+    expect(taiTimestampFromMediaTimestamp("500:42")).toEqual({ seconds: 500, nanosecs: 42 });
+  });
+
+  it("correctly returns null if something invalid is passed in", () => {
+    expect(taiTimestampFromMediaTimestamp("not a timestamp string")).toBeNull();
   });
 });

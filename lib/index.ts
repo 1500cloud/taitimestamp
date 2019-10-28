@@ -81,6 +81,21 @@ export function taiTimestampFromString(tsString: string): TaiTimestamp | null {
   return timestamp;
 }
 
+export function taiTimestampFromMediaTimestamp(tsString: string): TaiTimestamp | null {
+  const parts = tsString.split(":");
+  if (parts.length !== 2) {
+    return null;
+  }
+  const timestamp = {
+    seconds: parseInt(parts[0], 10),
+    nanosecs: parseInt(parts[1], 10),
+  };
+  if (isNaN(timestamp.seconds) || isNaN(timestamp.nanosecs)) {
+    return null;
+  }
+  return timestamp;
+}
+
 export function equals(a: TaiTimestamp, b: TaiTimestamp): boolean {
   return a.seconds === b.seconds && a.nanosecs === b.nanosecs;
 }
