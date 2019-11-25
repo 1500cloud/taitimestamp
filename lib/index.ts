@@ -1,4 +1,4 @@
-import { equals } from "./operators";
+import { equals, gt, gte, lt, lte } from "./operators";
 import {
   taiTimestampFromJsTime,
   taiTimestampFromMediaTimestamp,
@@ -24,4 +24,8 @@ export {
   taiTimestampFromMediaTimestamp,
   taiTimestampFromJsTime,
   equals,
+  gt,
+  gte,
+  lt,
+  lte,
 };
