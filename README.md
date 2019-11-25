@@ -31,9 +31,9 @@ domains.
 ### `now(): TaiTimestamp`
 
 Returns a string representing a TAI Timestamp for the current date. This is
-limited to the millisecond resolution of the underlying JavaScript platform. 
+limited to the millisecond resolution of the underlying JavaScript platform.
 
-### `jsTimeToTaiTimestamp(number): TaiTimestamp`
+### `taiTimestampFromJsTime(number): TaiTimestamp`
 
 Takes a JavaScript timestamp (e.g., `new Date().getTime()`) and converts it
 to a TAI Timestamp object (limited to the millisecond precision of a
@@ -63,6 +63,26 @@ as used in broadcasting (e.g., NMOS APIs).
 
 This compares two timestamp objects and returns if they are equal or not.
 
+### `gt(TaiTimestamp, TaiTimestamp): boolean`
+
+This compares two timestamp objects and returns whether or not the first is
+greater (later) than the second.
+
+### `gte(TaiTimestamp, TaiTimestamp): boolean`
+
+This compares two timestamp objects and returns whether or not the first is
+greater (later) than or equal to the second.
+
+### `lt(TaiTimestamp, TaiTimestamp): boolean`
+
+This compares two timestamp objects and returns whether or not the first is
+less (earlier) than the second.
+
+### `lte(TaiTimestamp, TaiTimestamp): boolean`
+
+This compares two timestamp objects and returns whether or not the first is
+less (earlier) than or equal to the second.
+
 ## Changelog
 
 Semantic versioning is in use here. Please see the GitHub releases page for
@@ -76,5 +96,5 @@ an issue on GitHub first to discuss with the maintainers. Please note that by
 contributing back to this project you agree to assign copyright of any code
 modifications to 1500 Services Ltd. Please also see our [code of conduct](./CODE_OF_CONDUCT.md).
 
-* Run unit tests: `yarn test`
-* Run a test watcher: `yarn dev`
+- Run unit tests: `yarn test`
+- Run a test watcher: `yarn dev`
