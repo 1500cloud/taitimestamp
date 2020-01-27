@@ -44,3 +44,10 @@ export function taiTimestampFromMediaTimestamp(tsString: string): TaiTimestamp |
   }
   return timestamp;
 }
+
+export function taiTimestampFromNanoseconds(nanosecs: bigint): TaiTimestamp | null {
+  return {
+    seconds: Number(nanosecs / 1000000000n),
+    nanosecs: Number(nanosecs % 1000000000n),
+  };
+}

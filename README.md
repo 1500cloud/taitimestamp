@@ -50,6 +50,11 @@ used to maintain precision).
 This takes a string like `"123455:678000000"` as used to represent time in
 the broadcasting domain (e.g., NMOS APIs) and returns a TaiTimestamp object.
 
+### `taiTimestampFromNanoseconds(BigInt): TaiTimestamp | null`
+
+This takes a BigInt number representing the number of nanoseconds and returns
+a TaiTimestamp object.
+
 ### `taiTimestampToString(TaiTimestamp): string`
 
 This converts a TaiTimestamp object to a string representation.

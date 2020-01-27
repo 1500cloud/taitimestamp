@@ -1,6 +1,7 @@
 import {
   taiTimestampFromJsTime,
   taiTimestampFromMediaTimestamp,
+  taiTimestampFromNanoseconds,
   taiTimestampFromString,
 } from "../lib/parsers";
 
@@ -42,11 +43,17 @@ describe("taiTimestampFromString()", () => {
 });
 
 describe("taiTimestampFromMediaTimestamp()", () => {
-  it("returns a TAI timestamp from a rational string representation", () => {
+  it("returns a TAI timestamp from a media timestamp string representation", () => {
     expect(taiTimestampFromMediaTimestamp("500:42")).toEqual({ seconds: 500, nanosecs: 42 });
   });
 
   it("correctly returns null if something invalid is passed in", () => {
     expect(taiTimestampFromMediaTimestamp("not a timestamp string")).toBeNull();
+  });
+});
+
+describe("taiTimestampFromNanoseconds()", () => {
+  it("returns a TAI timestamp from a nanosecond BigInt", () => {
+    expect(taiTimestampFromNanoseconds(1000000004n)).toEqual({ seconds: 1, nanosecs: 4 });
   });
 });

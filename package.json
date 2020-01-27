@@ -1,6 +1,6 @@
 {
   "name": "@1500cloud/taitimestamp",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A JavaScript/TypeScript library for manipulating TAI timestamps",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -60,16 +60,15 @@
       "@typescript-eslint/ban-ts-ignore": "off"
     },
     "env": {
-      "node": true
+      "browser": true
     }
   },
   "eslintIgnore": [
-    "dist",
-    "k8s"
+    "dist"
   ],
   "jest": {
     "preset": "ts-jest",
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "testPathIgnorePatterns": [
       "/node_modules/",
       "testHelpers",
