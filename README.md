@@ -64,6 +64,11 @@ This converts a TaiTimestamp object to a string representation.
 This converts a TaiTimestamp object to a string representation for TAI time
 as used in broadcasting (e.g., NMOS APIs).
 
+### `taiTimestampToNanoseconds(TaiTimestamp): BigInt`
+
+This returns a BigInt number representing the number of nanoseconds in the
+TaiTimestamp.
+
 ### `equals(TaiTimestamp, TaiTimestamp): boolean`
 
 This compares two timestamp objects and returns if they are equal or not.
