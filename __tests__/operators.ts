@@ -1,4 +1,4 @@
-import { add, equals, gt, gte, lt, lte } from "../lib/operators";
+import { add, equals, gt, gte, lt, lte, subtract } from "../lib/operators";
 import { taiTimestampFromString } from "../lib";
 
 describe("equals", () => {
@@ -82,6 +82,27 @@ describe("add", () => {
       equals(
         add(taiTimestampFromString("10.9"), taiTimestampFromString("1.9")),
         taiTimestampFromString("12.8"),
+      ),
+    ).toBeTruthy();
+  });
+});
+
+
+describe("subtract", () => {
+  it("simply subtracts 2 numbers", () => {
+    expect(
+      equals(
+        subtract(taiTimestampFromString("10.0"), taiTimestampFromString("4.5")),
+        taiTimestampFromString("5.5"),
+      ),
+    ).toBeTruthy();
+  });
+
+  it("correctly carries", () => {
+    expect(
+      equals(
+        subtract(taiTimestampFromString("10.1"), taiTimestampFromString("1.2")),
+        taiTimestampFromString("8.9"),
       ),
     ).toBeTruthy();
   });

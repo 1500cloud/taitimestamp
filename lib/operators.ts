@@ -26,3 +26,10 @@ export function add(a: TaiTimestamp, b: TaiTimestamp): TaiTimestamp {
     nanosecs: (a.nanosecs + b.nanosecs) % 1000000000,
   };
 }
+
+export function subtract(a: TaiTimestamp, b: TaiTimestamp): TaiTimestamp {
+  return {
+    seconds: a.seconds - b.seconds + Math.floor((a.nanosecs - b.nanosecs) / 1000000000),
+    nanosecs: (1000000000 + a.nanosecs - b.nanosecs) % 1000000000,
+  };
+}

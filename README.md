@@ -99,6 +99,13 @@ This adds two TaiTimestamps together and returns the result. This only really
 makes sense if you think of at least one of the TaiTimestamps as a duration,
 as adding together two absolute times doesn't really make sense.
 
+### `subtract(TaiTimestamp, TaiTimestamp): TaiTimestamp`
+
+This subtracts the second TaiTimestamp from the first and returns the result.
+This only really makes sense if you think of at least one of the
+TaiTimestamps as a duration, as subtracting two absolute times doesn't really
+make sense.
+
 ## Changelog
 
 Semantic versioning is in use here. Please see the GitHub releases page for
