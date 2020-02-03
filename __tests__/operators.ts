@@ -87,7 +87,6 @@ describe("add", () => {
   });
 });
 
-
 describe("subtract", () => {
   it("simply subtracts 2 numbers", () => {
     expect(
