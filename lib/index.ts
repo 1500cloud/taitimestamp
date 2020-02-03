@@ -1,10 +1,15 @@
-import { add, equals, gt, gte, lt, lte } from "./operators";
+import { add, equals, gt, gte, lt, lte, subtract } from "./operators";
 import {
   taiTimestampFromJsTime,
   taiTimestampFromMediaTimestamp,
+  taiTimestampFromNanoseconds,
   taiTimestampFromString,
 } from "./parsers";
-import { taiTimestampToMediaTimestamp, taiTimestampToString } from "./serialisers";
+import {
+  taiTimestampToMediaTimestamp,
+  taiTimestampToString,
+  taiTimestampToNanoseconds,
+} from "./serialisers";
 
 export interface TaiTimestamp {
   readonly seconds: number;
@@ -20,8 +25,10 @@ export function now(): TaiTimestamp {
 export {
   taiTimestampToString,
   taiTimestampToMediaTimestamp,
+  taiTimestampToNanoseconds,
   taiTimestampFromString,
   taiTimestampFromMediaTimestamp,
+  taiTimestampFromNanoseconds,
   taiTimestampFromJsTime,
   add,
   equals,
@@ -29,4 +36,5 @@ export {
   gte,
   lt,
   lte,
+  subtract,
 };
