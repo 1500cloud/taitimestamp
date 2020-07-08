@@ -1,4 +1,4 @@
-if (Date.now() > new Date("2020-06-28").getTime()) {
+if (Date.now() > new Date("2020-12-28").getTime()) {
   console.warn("Leap second database is out of date - safety is not guaranteed");
   console.warn("Please consider updating @1500cloud/taitimestamp");
 }
@@ -43,6 +43,6 @@ const LEAPSECONDS = [
   3550089600,
   3644697600,
   3692217600,
-].map(ts => ts - 2208988800);
+].map((ts) => ts - 2208988800);
 
 export default LEAPSECONDS;
