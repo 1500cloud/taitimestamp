@@ -7,7 +7,7 @@ export function taiTimestampFromJsTime(utcTimestamp: UtcTimestamp): TaiTimestamp
     seconds: utcSeconds,
     nanosecs: (utcTimestamp % 1000) * 1000000,
   };
-  LEAPSECONDS.forEach(threshold => {
+  LEAPSECONDS.forEach((threshold) => {
     if (threshold <= utcSeconds) {
       taiTimestamp.seconds += 1;
     }
