@@ -1,4 +1,4 @@
-if (Date.now() > new Date("2022-06-28").getTime()) {
+if (Date.now() > new Date("2023-06-28").getTime()) {
   console.warn("Leap second database is out of date - safety is not guaranteed");
   console.warn("Please consider updating @1500cloud/taitimestamp");
 }
